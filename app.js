@@ -19,8 +19,9 @@ app.get('/' , function(req, res, next) {
 });
 app.get('/whoami', function(req, res, next) {
   var agent = useragent.parse(req.headers['user-agent']);
+  var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   var response = {
-    "ipaddress": req.ip,
+    "ipaddress": ip,
     "language": req.acceptsLanguages()[0],
     "software": agent.os.toString()
   };
