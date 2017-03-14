@@ -1,7 +1,7 @@
 var express =  require('express');
 const app = express();
 const path = require('path');
-const bodyParser = require('body-parser');
+
 const useragent = require('useragent');
 const PORT  = process.env.PORT || 3000;
 
@@ -13,8 +13,6 @@ app.use(function(req, res, next){
     next();
   }
 });
-app.use(bodyParser.urlencoded({exteneded: false}));
-app.use(bodyParser.json());
 
 app.get('/' , function(req, res, next) {
   res.sendFile(path.join(__dirname + '/public/index.html'));

@@ -1,17 +1,26 @@
 {
-  "name": "Request header parser",
+  "name": "req-header-parser",
   "version": "1.0.0",
-  "description": "Request header parser micro service",
-  "main": "index.js",
-  "scripts": {
-    "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Andrei",
-  "license": "ISC",
+  "description": "",
+  "main": "app.js",
   "dependencies": {
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "useragent": "^2.1.12"
-  }
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndreiCalazans/req-header-parser.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndreiCalazans/req-header-parser/issues"
+  },
+  "homepage": "https://github.com/AndreiCalazans/req-header-parser#readme"
 }
