@@ -1,10 +1,10 @@
 var express =  require('express');
 const app = express();
 const path = require('path');
-
-const timeStamp = require(path.join(__dirname + '/script.js'));
-
+const bodyParser = require('body-parser');
+const useragent = require('useragent');
 const PORT  = process.env.PORT || 3000;
+
 
 app.use(function(req, res, next){
   if (req.headers['x-forwarded-proto'] === 'https'){
@@ -13,13 +13,20 @@ app.use(function(req, res, next){
     next();
   }
 });
+app.use(bodyParser.urlencoded({exteneded: false}));
+app.use(bodyParser.json());
 
 app.get('/' , function(req, res, next) {
   res.sendFile(path.join(__dirname + '/public/index.html'));
 });
 app.get('/whoami', function(req, res, next) {
-  var req = req;
-  res.send(req);
+  var agent = useragent.parse(req.headers['user-agent']);
+  var response = {
+    "ipaddress": req.ip,
+    "language": req.acceptsLanguages()[0],
+    "software": agent.os.toString()
+  };
+    res.json(response);
 })
 
 app.listen(PORT, function() {
